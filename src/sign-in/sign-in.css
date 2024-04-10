@@ -1,0 +1,93 @@
+.signin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #3498db; /* Blue background */
+  }
+  
+  .signin-form {
+    background-color: #fff; /* White background */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    width: 320px;
+  }
+  
+  .form-group {
+    margin-bottom: 24px;
+  }
+  
+  label {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .input-group {
+    position: relative;
+    max-width: 270px;
+  }
+  
+  input.form-control {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 12px;
+    padding-right: 36px;
+    max-width: 270px;
+  }
+  
+  .input-icon {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+  }
+  
+  .remember-me {
+    display: flex;
+    align-items: center;
+  }
+  
+  .remember-checkbox {
+    margin-right: 8px;
+  }
+  
+  .forgot-password {
+    font-size: 14px;
+    color: #3498db;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-primary {
+    background-color: #3498db; /* Blue */
+    color: #fff;
+    border: none;
+  }
+  
+  .btn-secondary {
+    background-color: #2c3e50; /* Dark gray */
+    color: #fff;
+    border: none;
+  }
+  
+  .terms-condition {
+    font-size: 12px;
+    margin-top: 16px;
+  }
+  
+  .register-link {
+    margin-top: 24px;
+    font-size: 14px;
+  }
+  
+  .register {
+    color: #3498db;
+  }
+  
