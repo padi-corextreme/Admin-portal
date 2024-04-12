@@ -40,7 +40,7 @@
   .input-icon {
     position: absolute;
     top: 50%;
-    right: 12px;
+    right: 50px;
     transform: translateY(-50%);
   }
   

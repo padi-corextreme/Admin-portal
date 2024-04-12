@@ -22,7 +22,7 @@ function SignIn() {
                 placeholder="Enter Your Email"
                 required
               />
-              <FaUser className="input-icon" />
+              <FaUser className="input-icon mr-40px" />
             </div>
           </div>
 
@@ -36,7 +36,7 @@ function SignIn() {
                 placeholder="Enter Password"
                 required
               />
-              <FaLock className="input-icon" />
+              <FaLock className="input-icon mr-40px" />
             </div>
           </div>
 
@@ -55,7 +55,7 @@ function SignIn() {
           <button type="submit" className="btn btn-primary">Sign in</button>
 
           <p className="terms-condition">Agree to our terms and conditions.</p>
-          <button type="button" className="btn btn-secondary">Create Account</button>
+          <button type="button" className="btn btn-secondary">Sign Up</button>
 
           <div className="register-link">
             <p>Don't have an account? <a href="#" className="register">Register</a></p>
