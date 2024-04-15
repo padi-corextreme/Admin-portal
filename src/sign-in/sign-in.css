@@ -3,6 +3,11 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+p{
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
 .font-poppins {
   font-family: 'Poppins', sans-serif;
 }

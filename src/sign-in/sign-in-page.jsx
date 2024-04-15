@@ -49,13 +49,9 @@ function SignIn() {
               />
               <label htmlFor="remember">Remember me</label>
             </div>
+            <button type="submit" className="btn btn-primary">Sign in</button>
             <a href="#" className="forgot-password">Forgot password?</a>
           </div>
-
-          <button type="submit" className="btn btn-primary">Sign in</button>
-
-          <p className="terms">By Signing in, you agree to our terms and privacy policy.</p>
-          <button type="button" className="btn btn-secondary">Sign Up</button>
 
           <div className="flex items-center mt-4">
             <span className="sign-in-with">Sign in with:</span>
@@ -74,6 +70,13 @@ function SignIn() {
               <button className="social-btn">
                 <img className="social-icon" src="https://ucarecdn.com/3277d952-8e21-4aad-a2b7-d484dad531fb/" alt= "apple"/>
               </button>
+
+          <p className="terms">By Signing in, you agree to our terms and privacy policy.</p>
+          
+          <p> Don't have an account? Sign up.</p>
+          <button type="button" className="btn btn-secondary">Sign Up</button>
+
+          
             </div>
           </div>
         </form>
