@@ -22,7 +22,7 @@ function SignIn() {
                 className="form-control"
                 placeholder="Enter Your Email"
                 required/>
-                <FaUser />
+                <FaUser className="icon" />
             </div>
           </div>
 
@@ -36,7 +36,7 @@ function SignIn() {
                 placeholder="Enter Password"
                 required
               />
-               <FaLock />
+               <FaLock className="icon" />
             </div>
           </div>
 
@@ -54,14 +54,15 @@ function SignIn() {
 
           <button type="submit" className="btn btn-primary">Sign in</button>
 
-          <p className="terms">Agree to our terms and conditions.</p>
+          <p className="terms">By Signing in, you gree to our terms and privacy policy.</p>
           <button type="button" className="btn btn-secondary">Sign Up</button>
 
           <div className="flex items-center mt-4">
             <span className="sign-in-with">Sign in with:</span>
             <div className="flex space-x-2">
-              <button className="social-btn">
-                <img className="social-icon" src="https://ucarecdn.com/3277d952-8e21-4aad-a2b7-d484dad531fb/"/>
+            <button className="social-btn">
+                <img className="social-icon" src="https://ucarecdn.com/8f25a2ba-bdcf-4ff1-b596-088f330416ef/"
+              alt="Google" />
               </button>
               <button className="social-btn">
                 <img className="social-icon" src="https://ucarecdn.com/6f56c0f1-c9c0-4d72-b44d-51a79ff38ea9/" alt="Facebook" />
@@ -69,6 +70,9 @@ function SignIn() {
               <button className="social-btn">
                 <img className="social-icon" src="https://ucarecdn.com/82d7ca0a-c380-44c4-ba24-658723e2ab07/"
               alt="twitter" />
+              </button>
+              <button className="social-btn">
+                <img className="social-icon" src="https://ucarecdn.com/3277d952-8e21-4aad-a2b7-d484dad531fb/" alt= "apple"/>
               </button>
             </div>
           </div>
