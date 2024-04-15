@@ -54,7 +54,7 @@ function SignIn() {
 
           <button type="submit" className="btn btn-primary">Sign in</button>
 
-          <p className="terms">By Signing in, you gree to our terms and privacy policy.</p>
+          <p className="terms">By Signing in, you agree to our terms and privacy policy.</p>
           <button type="button" className="btn btn-secondary">Sign Up</button>
 
           <div className="flex items-center mt-4">
