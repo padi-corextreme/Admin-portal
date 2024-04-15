@@ -11,7 +11,8 @@ function SignIn() {
   return (
     <div className="signin-container">
       <div className="signin-form">
-        <form onSubmit={handleSubmit}>
+        <h1>Sign In</h1>
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <div className="input-group">
@@ -20,9 +21,8 @@ function SignIn() {
                 id="email"
                 className="form-control"
                 placeholder="Enter Your Email"
-                required
-              />
-              <FaUser className="input-icon mr-40px" />
+                required/>
+                <FaUser />
             </div>
           </div>
 
@@ -36,11 +36,11 @@ function SignIn() {
                 placeholder="Enter Password"
                 required
               />
-              <FaLock className="input-icon mr-40px" />
+               <FaLock />
             </div>
           </div>
 
-          <div className="form-group">
+          <div className="flex items-center justify-between">
             <div className="remember-me">
               <input
                 type="checkbox"
@@ -54,11 +54,23 @@ function SignIn() {
 
           <button type="submit" className="btn btn-primary">Sign in</button>
 
-          <p className="terms-condition">Agree to our terms and conditions.</p>
+          <p className="terms">Agree to our terms and conditions.</p>
           <button type="button" className="btn btn-secondary">Sign Up</button>
 
-          <div className="register-link">
-            <p>Don't have an account? <a href="#" className="register">Register</a></p>
+          <div className="flex items-center mt-4">
+            <span className="sign-in-with">Sign in with:</span>
+            <div className="flex space-x-2">
+              <button className="social-btn">
+                <img className="social-icon" src="https://ucarecdn.com/3277d952-8e21-4aad-a2b7-d484dad531fb/"/>
+              </button>
+              <button className="social-btn">
+                <img className="social-icon" src="https://ucarecdn.com/6f56c0f1-c9c0-4d72-b44d-51a79ff38ea9/" alt="Facebook" />
+              </button>
+              <button className="social-btn">
+                <img className="social-icon" src="https://ucarecdn.com/82d7ca0a-c380-44c4-ba24-658723e2ab07/"
+              alt="twitter" />
+              </button>
+            </div>
           </div>
         </form>
       </div>
