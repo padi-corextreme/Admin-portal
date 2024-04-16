@@ -9,7 +9,7 @@ const Signup = () => {
     <div class="grid gap-8">
       <div
         id="back-div"
-        class="bg-gradient-to-r from-blue-500 to-purple-500 rounded-[26px] m-4 "
+        class="bg-gradient-to-r from-blue-500 to-[#F67F17] rounded-[26px] m-4 "
       >
         <div
           class="border-[20px] border-transparent rounded-[20px] dark:bg-gray-900 bg-white shadow-lg xl:p-10 2xl:p-8 lg:p-4 md:p-8 sm:p-2 m-2"
@@ -72,8 +72,42 @@ const Signup = () => {
                 required
               />
             </div>
+
+            <div>
+              <label for="password" class="mb-2 dark:text-gray-400 text-sm"> Company Name</label>
+              <input
+                id="password"
+                class="border dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 p-2 mb-2 shadow-md placeholder:text-base border-gray-300 rounded-lg w-full focus:scale-105 ease-in-out duration-300"
+                type="password"
+                placeholder="company name"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="password" class="mb-2 dark:text-gray-400 text-sm"> Country</label>
+              <input
+                id="password"
+                class="border dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 p-2 mb-2 shadow-md placeholder:text-base border-gray-300 rounded-lg w-full focus:scale-105 ease-in-out duration-300"
+                type="country"
+                placeholder="country"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="password" class="mb-2 dark:text-gray-400 text-sm"> Contact</label>
+              <input
+                id="password"
+                class="border dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 p-2 mb-2 shadow-md placeholder:text-base border-gray-300 rounded-lg w-full focus:scale-105 ease-in-out duration-300"
+                type="contact"
+                placeholder="contact"
+                
+              />
+            </div>
+
             <button
-              class="bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg mt-6 p-2 text-white rounded-lg w-full hover:scale-105 hover:from-purple-500 hover:to-blue-500 transition duration-300 ease-in-out"
+              class="bg-gradient-to-r from-blue-500 to-[#F67F17] shadow-lg mt-6 p-2 text-white rounded-lg w-full hover:scale-105 hover:from-[#F67F17] hover:to-blue-500 transition duration-300 ease-in-out"
               type="submit"
             >
               SIGN UP
