@@ -1,0 +1,132 @@
+/* Global styles */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+text-align: center;
+font-weight: bold;
+margin-bottom: 15px;
+}
+
+p {
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Sign-in component styles */
+.signin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.signin-form {
+  max-width: 400px;
+  width: 100%;
+  padding: 2rem;
+  border: 5px solid transparent; /* Increase border thickness */
+  border-image: linear-gradient(to right, #3b82f6, #8b5cf6) 1; /* Apply gradient as border */
+  border-radius: 20px;
+  background: transparent; /* Transparent background */
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  padding: 10;
+  font-size: 1.2rem;
+  border-radius: 0.375rem;
+  border: none;
+  width: 100%;
+  padding-right: 1rem;
+}
+
+
+.input-group {
+  position: relative; /* Ensure relative positioning for the input group */
+  display: flex; /* Use flexbox for positioning */
+  align-items: center; /* Align items vertically */
+}
+
+.input-icon {
+  position: absolute; /* Position the icon absolutely */
+  right: 0.5rem; /* Adjust position for the right corner */
+  top: 50%; /* Align vertically */
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  color: #a0aec0;
+}
+
+
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-checkbox {
+  margin-right: 0.5rem;
+}
+
+.forgot-password {
+  text-decoration: none;
+  color: #4299e1;
+}
+
+.btn {
+  padding: 0.75rem 2rem; /* Longer buttons */
+  font-size: 1rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  border: none;
+  display: block; /* Center the buttons */
+  margin: 0 auto; /* Center the buttons */
+  width: 100%; /* Make the buttons full width */
+}
+
+.btn-primary {
+  background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: #3b82f6; /* Change to match the gradient color */
+  color: #fff;
+  border: 1px solid #3b82f6;
+}
+
+.terms-condition {
+  font-size: 0.875rem;
+  color: #a0aec0;
+}
+
+.register-link {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.register-link p {
+  margin-bottom: 0;
+}
+
+.register {
+  color: #4299e1;
+  text-decoration: none;
+}
+
+.social-icon {
+  width: 40px; /* Reduce icon size */
+  height: 40px; /* Ensure square icon */
+  margin-right: 10px;
+  background-color: #fff;
+  padding: 8px; /* Adjust padding */
+  border-radius: 50%;
+}
