@@ -1,12 +1,14 @@
-import React from 'react';
-import './index.css';
-import SignIn from './sign-in/sign-in-page';
+import logo from './logo.svg';
+import './App.css';
+import Signup from './signup/signup.js';
+    import SignIn from './sign-in/sign-in-page';
 
 function App() {
   return (
-    <div>
-      <SignIn/>
-    </div>
+   <>
+   <Signup/>
+        <SignIn/>
+   </>
   );
 }
 
