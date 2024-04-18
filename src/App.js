@@ -4,6 +4,9 @@ import Signup from './signup/signup.js';
     import SignIn from './sign-in/sign-in-page';
 import AdminDash from './admin-dash.js';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import AllPromo from './signup/allpromo.js';
+import AddPromo from './add-promo.js';
+import ManagePromo from './signup/managepromo.js';
 
 function App() {
   return (
@@ -18,7 +21,7 @@ function App() {
         </Routes>
    {/* <Signup/> */}
         {/* <SignIn/> */}
-      
+     
         </BrowserRouter>
    </div>
   );
