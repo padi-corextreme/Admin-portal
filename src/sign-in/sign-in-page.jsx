@@ -10,23 +10,35 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setErrorMessage(''); // Clear any previous error messages
       const response = await axios.post('http://localhost:7000/login', {
-        email,
-        password
+        // Ensure that the request body is formatted correctly as JSON
+        email: email.trim(), // Trim leading and trailing whitespaces
+        password: password.trim(), // Trim leading and trailing whitespaces
       });
       console.log(response.data);
-      // Optionally, redirect the user to a different page upon successful login
-      // history.push('/dashboard'); // Make sure to import useHistory from 'react-router-dom'
+      
+      // Redirect the user to the dashboard upon successful login
+      window.location.href = '/dashboard';
     } catch (error) {
       console.error('Login failed:', error);
-      setErrorMessage('Could not recognize your credentials. Sign up to create a new account.');
+      if (error.response && error.response.status === 401) {
+        setErrorMessage('Authentication failed. Please check your email and password.');
+      } else if (error.response && error.response.status === 404) {
+        setErrorMessage('Account not found. Please sign up to create a new account.');
+      } else if (error.response && error.response.data && error.response.data.message) {
+        setErrorMessage(error.response.data.message);
+      } else {
+        setErrorMessage('An error occurred. Please try again later.');
+      }
     }
   };
+  
 
   return (
-    <div className="flex font-poppins items-center justify-center dark:bg-white-900 min-w-screen min-h-screen">
+    <body className="flex font-poppins items-center justify-center dark:bg-white-900 min-w-screen min-h-screen">
       <div className="grid gap-8">
-        <div className="bg-gradient-to-r from-blue-500 to-[#F67F17] rounded-[26px] m-4">
+        <div id="back-div" className="bg-gradient-to-r from-blue-500 to-purple-500 rounded-[26px] m-4 ">
           <div className="border-[20px] border-transparent rounded-[20px] dark:bg-gray-900 bg-white shadow-lg xl:p-10 2xl:p-8 lg:p-4 md:p-8 sm:p-2 m-2">
             <h1 className="pt-4 pb-6 font-bold text-3xl dark:text-gray-400 text-center cursor-default">
               Sign In
@@ -60,7 +72,7 @@ const SignIn = () => {
                 />
               </div>
               <button
-                className="bg-gradient-to-r from-blue-500 to-[#F67F17] shadow-lg mt-6 p-2 text-white rounded-lg w-full hover:scale-105 hover:from-[#F67F17] hover:to-blue-500 transition duration-300 ease-in-out"
+                className="bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg mt-6 p-2 text-white rounded-lg w-full hover:scale-105 hover:from-purple-500 hover:to-blue-500 transition duration-300 ease-in-out"
                 type="submit"
               >
                 SIGN IN
@@ -81,9 +93,8 @@ const SignIn = () => {
           </div>
         </div>
       </div>
-    </div>
+    </body>
   );
 };
 
 export default SignIn;
-
