@@ -1,88 +1,89 @@
-// import React from 'react';
-// import { FaLock, FaUser } from 'react-icons/fa';
-// import './sign-in.css';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-// function SignIn() {
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     // Implement form submission logic here
-//   };
+const SignIn = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-//   return (
-//     <div className="signin-container">
-//       <div className="signin-form">
-//         <h1>Sign In</h1>
-//         <form onSubmit={handleSubmit} className="space-y-4">
-//           <div className="form-group">
-//             <label htmlFor="email">Email</label>
-//             <div className="input-group">
-//               <input
-//                 type="text"
-//                 id="email"
-//                 className="form-control"
-//                 placeholder="Enter Your Email"
-//                 required/>
-//                 <FaUser className="icon" />
-//             </div>
-//           </div>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:7000/login', {
+        email,
+        password
+      });
+      console.log(response.data);
+      // Optionally, redirect the user to a different page upon successful login
+      // history.push('/dashboard'); // Make sure to import useHistory from 'react-router-dom'
+    } catch (error) {
+      console.error('Login failed:', error);
+      setErrorMessage('Could not recognize your credentials. Sign up to create a new account.');
+    }
+  };
 
-//           <div className="form-group">
-//             <label htmlFor="password">Password</label>
-//             <div className="input-group">
-//               <input
-//                 type="password"
-//                 id="password"
-//                 className="form-control"
-//                 placeholder="Enter Password"
-//                 required
-//               />
-//                <FaLock className="icon" />
-//             </div>
-//           </div>
+  return (
+    <div className="flex font-poppins items-center justify-center dark:bg-white-900 min-w-screen min-h-screen">
+      <div className="grid gap-8">
+        <div className="bg-gradient-to-r from-blue-500 to-[#F67F17] rounded-[26px] m-4">
+          <div className="border-[20px] border-transparent rounded-[20px] dark:bg-gray-900 bg-white shadow-lg xl:p-10 2xl:p-8 lg:p-4 md:p-8 sm:p-2 m-2">
+            <h1 className="pt-4 pb-6 font-bold text-3xl dark:text-gray-400 text-center cursor-default">
+              Sign In
+            </h1>
+            {errorMessage && (
+              <div className="text-red-500 mb-4 text-center">{errorMessage}</div>
+            )}
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="email" className="mb-2 dark:text-gray-400 text-sm">Email</label>
+                <input
+                  id="email"
+                  className="border dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 p-2 shadow-md placeholder:text-base border-gray-300 rounded-lg w-full focus:scale-105 ease-in-out duration-300"
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="password" className="mb-2 dark:text-gray-400 text-sm">Password</label>
+                <input
+                  id="password"
+                  className="border dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 p-2 mb-2 shadow-md placeholder:text-base border-gray-300 rounded-lg w-full focus:scale-105 ease-in-out duration-300"
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <button
+                className="bg-gradient-to-r from-blue-500 to-[#F67F17] shadow-lg mt-6 p-2 text-white rounded-lg w-full hover:scale-105 hover:from-[#F67F17] hover:to-blue-500 transition duration-300 ease-in-out"
+                type="submit"
+              >
+                SIGN IN
+              </button>
+            </form>
+            <div className="flex flex-col mt-4 items-center justify-center text-sm">
+              <h3>
+                <span className="cursor-default dark:text-gray-300">
+                  Don't have an account?{' '}
+                  <Link to="/signup" className="group text-blue-400 transition-all duration-100 ease-in-out">
+                    <span className="bg-left-bottom ml-1 bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+                      Sign Up
+                    </span>
+                  </Link>
+                </span>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-//           <div className="flex items-center justify-between">
-//             <div className="remember-me">
-//               <input
-//                 type="checkbox"
-//                 id="remember"
-//                 className="remember-checkbox"
-//               />
-//               <label htmlFor="remember">Remember me</label>
-//             </div>
-//             <button type="submit" className="btn btn-primary">Sign in</button>
-//             <a href="#" className="forgot-password">Forgot password?</a>
-//           </div>
+export default SignIn;
 
-//           <div className="flex items-center mt-4">
-//             <span className="sign-in-with">Sign in with:</span>
-//             <div className="flex space-x-2">
-//             <button className="social-btn">
-//                 <img className="social-icon" src="https://ucarecdn.com/8f25a2ba-bdcf-4ff1-b596-088f330416ef/"
-//               alt="Google" />
-//               </button>
-//               <button className="social-btn">
-//                 <img className="social-icon" src="https://ucarecdn.com/6f56c0f1-c9c0-4d72-b44d-51a79ff38ea9/" alt="Facebook" />
-//               </button>
-//               <button className="social-btn">
-//                 <img className="social-icon" src="https://ucarecdn.com/82d7ca0a-c380-44c4-ba24-658723e2ab07/"
-//               alt="twitter" />
-//               </button>
-//               <button className="social-btn">
-//                 <img className="social-icon" src="https://ucarecdn.com/3277d952-8e21-4aad-a2b7-d484dad531fb/" alt= "apple"/>
-//               </button>
-
-//           <p className="terms">By Signing in, you agree to our terms and privacy policy.</p>
-          
-//           <p> Don't have an account? Sign up.</p>
-//           <button type="button" className="btn btn-secondary">Sign Up</button>
-
-          
-//             </div>
-//           </div>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default SignIn;
