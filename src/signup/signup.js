@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Signup = () => {
   const [formData, setFormData] = useState({
     firstName: '',
-    surname: '',
+    lastName: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -24,7 +24,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       setErrorMessage(''); // Clear any previous error messages
-      const response = await axios.post('http://localhost:7000/signup', formData);
+      const response = await axios.post('http://localhost:7000/account', formData);
       console.log(response.data);
       // Redirect the user to the dashboard or any other appropriate page upon successful signup
       window.location.href = '/dashboard';
@@ -43,7 +43,7 @@ const Signup = () => {
   };
 
   return (
-    <body className="flex font-poppins items-center justify-center dark:bg-white-900 min-w-screen min-h-screen">
+    <div className="flex font-poppins items-center justify-center dark:bg-white-900 min-w-screen min-h-screen">
       <div className="grid gap-8">
         <div id="back-div" className="bg-gradient-to-r from-blue-500 to-[#F67F17] rounded-[26px] m-4 ">
           <div className="border-[20px] border-transparent rounded-[20px] dark:bg-gray-900 bg-white shadow-lg xl:p-10 2xl:p-8 lg:p-4 md:p-8 sm:p-2 m-2">
@@ -68,14 +68,14 @@ const Signup = () => {
                 />
               </div>
               <div>
-                <label htmlFor="surname" className="mb-2 dark:text-gray-400 text-sm">Surname</label>
+                <label htmlFor="lastName" className="mb-2 dark:text-gray-400 text-sm">Last Name</label>
                 <input
-                  id="surname"
-                  name="surname"
+                  id="lastName"
+                  name="lastName"
                   className="border dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 p-2 shadow-md placeholder:text-base border-gray-300 rounded-lg w-full focus:scale-105 ease-in-out duration-300"
                   type="text"
-                  placeholder="Surname"
-                  value={formData.surname}
+                  placeholder="Last Name"
+                  value={formData.lastName}
                   onChange={handleChange}
                   required
                 />
@@ -179,9 +179,8 @@ const Signup = () => {
           </div>
         </div>
       </div>
-    </body>
+    </div>
   );
 };
 
 export default Signup;
-
