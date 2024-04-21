@@ -1,5 +1,5 @@
 import React from 'react'
-import padi from "../src/assests/padi.jpeg"
+import padi from "../assets/padi.jpeg"
 
 export default function AdminDash() {
   return (
