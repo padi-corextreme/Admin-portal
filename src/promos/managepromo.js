@@ -7,7 +7,7 @@ export default function ManagePromo() {
   useEffect(() => {
     async function fetchPromotions() {
       try {
-        const response = await axios.get('/api/admin/promotions');
+        const response = await axios.get('http://localhost:7000/api/admin/promotions');
         setPromotions(response.data);
       } catch (error) {
         console.error('Error fetching promotions:', error);
@@ -16,6 +16,15 @@ export default function ManagePromo() {
 
     fetchPromotions();
   }, []);
+
+  const deletePromotion = async (id) => {
+    try {
+      await axios.delete(`http://localhost:7000/api/admin/promotions/${id}`);
+      setPromotions(promotions.filter(promotion => promotion._id !== id));
+    } catch (error) {
+      console.error('Error deleting promotion:', error);
+    }
+  };
 
   return (
     <section id='managepromos'>
@@ -44,7 +53,7 @@ export default function ManagePromo() {
                 <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">{promotion.categories}</span>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <button className="ml-2 px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out">Delete</button>
+                <button onClick={() => deletePromotion(promotion._id)} className="ml-2 px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out">Delete</button>
               </td>
             </tr>
           ))}

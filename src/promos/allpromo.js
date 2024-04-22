@@ -11,7 +11,7 @@ const AllPromo = () => {
 
   const fetchPromotions = async () => {
     try {
-      const response = await axios.get('/api/admin/promotions');
+      const response = await axios.get('http://localhost:7000/api/admin/promotions');
       setPromotions(response.data);
       
     } catch (error) {
