@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AddPromo = ({ userId, onPromotionAdded }) => {
+const AddPromo = () => {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
         image: null,
-        discountType: '',
-        discountAmount: 0,
+        originalPrice: '',
+        discountPrice: '',
         categories: '',
     });
 
@@ -26,13 +26,14 @@ const AddPromo = ({ userId, onPromotionAdded }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log('Form submitted');
         try {
             const formDataToSubmit = new FormData();
             formDataToSubmit.append('title', formData.title);
             formDataToSubmit.append('description', formData.description);
             formDataToSubmit.append('image', formData.image);
-            formDataToSubmit.append('discountType', formData.discountType);
-            formDataToSubmit.append('discountAmount', formData.discountAmount);
+            formDataToSubmit.append('originalPrice', formData.originalPrice);
+            formDataToSubmit.append('discountPrice', formData.discountPrice);
             formDataToSubmit.append('categories', formData.categories);
 
             const response = await axios.post('http://localhost:7000/api/admin/promotions', formDataToSubmit, {
@@ -42,17 +43,17 @@ const AddPromo = ({ userId, onPromotionAdded }) => {
             });
 
             if (response.status === 201) {
+                console.log('Promotion added successfully');
                 setSuccessMessage('Promotion added successfully.');
                 setFormData({
                     title: '',
                     description: '',
                     image: null,
-                    discountType: '',
-                    discountAmount: 0,
+                    originalPrice: '',
+                    discountPrice: '',
                     categories: '',
                 });
                 setErrorMessage('');
-                onPromotionAdded();
             }
         } catch (error) {
             console.error('Error adding promotion:', error);
@@ -88,13 +89,13 @@ const AddPromo = ({ userId, onPromotionAdded }) => {
                     </div>
                     {/* Discount Type */}
                     <div className="mb-4">
-                        <label htmlFor="discountType" className="text-sm leading-7 text-gray-600">Discount Type</label>
-                        <input type="text" id="discountType" name="discountType" value={formData.discountType} onChange={handleChange} className="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
+                        <label htmlFor="originalPrice" className="text-sm leading-7 text-gray-600">Original Price</label>
+                        <input type="text" id="originalPrice" name="originalPrice" value={formData.originalPrice} onChange={handleChange} className="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
                     </div>
                     {/* Discount Amount */}
                     <div className="mb-4">
-                        <label htmlFor="discountAmount" className="text-sm leading-7 text-gray-600">Discount Amount</label>
-                        <input type="number" id="discountAmount" name="discountAmount" value={formData.discountAmount} onChange={handleChange} className="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
+                        <label htmlFor="discountPrice" className="text-sm leading-7 text-gray-600">Discount Price</label>
+                        <input type="number" id="discountPrice" name="discountPrice" value={formData.discountPrice} onChange={handleChange} className="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
                     </div>
                     {/* Categories */}
                     <div className="mb-4">

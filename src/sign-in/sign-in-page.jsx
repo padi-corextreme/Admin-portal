@@ -17,7 +17,7 @@ const SignIn = () => {
         password: password.trim(), // Trim leading and trailing whitespaces
       });
       console.log(response.data);
-
+      sessionStorage.setItem('USER_INFO', JSON.stringify(response.data));
       // Redirect the user to the dashboard upon successful login
       window.location.href = '/dashboard';
     } catch (error) {

@@ -26,6 +26,7 @@ const Signup = () => {
       setErrorMessage(''); // Clear any previous error messages
       const response = await axios.post('http://localhost:7000/account', formData);
       console.log(response.data);
+      sessionStorage.setItem('USER_INFO', JSON.stringify(response.data));
       // Redirect the user to the dashboard or any other appropriate page upon successful signup
       window.location.href = '/dashboard';
     } catch (error) {

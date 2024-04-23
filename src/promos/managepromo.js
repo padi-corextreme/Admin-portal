@@ -36,8 +36,8 @@ export default function ManagePromo() {
           <tr>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product Title</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product Description</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Discount Type</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Discount Amount</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Original Price</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Discount Price</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Categories</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
           </tr>
@@ -47,8 +47,8 @@ export default function ManagePromo() {
             <tr key={promotion._id} className="transition-all duration-300 hover:bg-gray-100">
               <td className="px-6 py-4 whitespace-nowrap">{promotion.title}</td>
               <td className="px-6 py-4 whitespace-nowrap">{promotion.description}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{promotion.discountType}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{promotion.discountAmount}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{promotion.originalPrice}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{promotion.discountPrice}</td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">{promotion.categories}</span>
               </td>

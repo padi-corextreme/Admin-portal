@@ -13,15 +13,9 @@ const AllPromo = () => {
     try {
       const response = await axios.get('http://localhost:7000/api/admin/promotions');
       setPromotions(response.data);
-      
     } catch (error) {
       console.error('Error fetching promotions:', error);
     }
-  };
-
-  const handlePromotionAdded = () => {
-    // After a new promotion is added, refresh the list of promotions
-    fetchPromotions();
   };
 
   return (
@@ -34,14 +28,16 @@ const AllPromo = () => {
         {promotions.map((promotion) => (
           <ProductCard
             key={promotion._id}
-            imageUrl={promotion.image}
+            imageUrl={`http://localhost:7000/uploads/images/${promotion.image}`}
             title={promotion.title}
             description={promotion.description}
-            discountAmount={promotion.discountAmount}
+            originalPrice={promotion.originalPrice}
+            discountPrice={promotion.discountPrice}
           />
         ))}
       </section>
     </div>
   );
 };
+
 export default AllPromo;
