@@ -28,6 +28,8 @@ const AddPromo = () => {
         e.preventDefault();
         console.log('Form submitted');
         try {
+            const userInfo = JSON.parse(sessionStorage.getItem('USER_INFO'));
+
             const formDataToSubmit = new FormData();
             formDataToSubmit.append('title', formData.title);
             formDataToSubmit.append('description', formData.description);
@@ -35,6 +37,7 @@ const AddPromo = () => {
             formDataToSubmit.append('originalPrice', formData.originalPrice);
             formDataToSubmit.append('discountPrice', formData.discountPrice);
             formDataToSubmit.append('categories', formData.categories);
+            formDataToSubmit.append('createdBy', userInfo._id); // Assuming user ID is stored in _id field
 
             const response = await axios.post('http://localhost:7000/api/admin/promotions', formDataToSubmit, {
                 headers: {
