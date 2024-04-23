@@ -69,9 +69,14 @@ export default function AdminDash() {
               <div class="flex flex-shrink-0 items-center ml-auto">
                 <button class="inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg">
                   <span class="sr-only">User Menu</span>
-                  <div class="hidden md:flex md:flex-col md:items-end md:leading-tight">
+                  <div class="hidden md:flex md:flex-col md:items-end md:leading-tight mr-2">
                     <span class="font-semibold"></span>
-                    <span class="text-sm text-gray-600">{userInfo.companyName}</span>
+                    <span class="text-sm text-gray-600">{userInfo.firstName}</span>
+                  </div>
+                  <span>|</span>
+                  <div class="hidden md:flex md:flex-col md:items-end md:leading-tight ml-2">
+                    <span class="font-semibold"></span>
+                    <span class="text-sm font-bold text-gray-600">{userInfo.companyName}</span>
                   </div>
                   <span class="h-12 w-12 ml-2 sm:ml-3 mr-2 bg-gray-100 rounded-full overflow-hidden">
                     <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="user profile photo" class="h-full w-full object-cover" />
@@ -102,7 +107,7 @@ export default function AdminDash() {
               <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
                 <div class="mr-6">
                   <h1 class="text-4xl font-semibold mb-2">Padi Admin Portal</h1>
-                  <h2 class="text-gray-600 ml-0.5">Welcome To Your Portal</h2>
+                  <h2 class="text-gray-600 ml-0.5">Welcome  <span class="text-sm text-gray-600">{userInfo.firstName}</span> To Your Portal</h2>
                 </div>
                 <div class="flex flex-wrap items-start justify-end -mb-3">
                   <button class="inline-flex px-5 py-3 text-[#F67F17] hover:text-orange-700 focus:text-[#F67F17]  focus:bg-purple-100 border border-[#F67F17] rounded-md mb-3">
