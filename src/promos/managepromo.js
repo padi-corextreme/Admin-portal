@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 
 export default function ManagePromo() {
   const [promotions, setPromotions] = useState([]);
@@ -20,9 +21,26 @@ export default function ManagePromo() {
   const deletePromotion = async (id) => {
     try {
       await axios.delete(`http://localhost:7000/api/admin/promotions/${id}`);
-      setPromotions(promotions.filter(promotion => promotion._id !== id));
+      setPromotions(promotions.map(promotion => {
+        if (promotion._id === id) {
+          setTimeout(() => {
+            setPromotions(promotions.filter(p => p._id !== id));
+          }, 500);
+          return { ...promotion, success: true, error: false };
+        }
+        return promotion;
+      }));
     } catch (error) {
       console.error('Error deleting promotion:', error);
+      setPromotions(promotions.map(promotion => {
+        if (promotion._id === id) {
+          setTimeout(() => {
+            setPromotions(promotions.filter(p => p._id !== id));
+          }, 500);
+          return { ...promotion, success: false, error: true };
+        }
+        return promotion;
+      }));
     }
   };
 
@@ -54,6 +72,18 @@ export default function ManagePromo() {
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <button onClick={() => deletePromotion(promotion._id)} className="ml-2 px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out">Delete</button>
+                {promotion.success && (
+                  <div className="flex items-center">
+                    <FaCheckCircle className="ml-2 text-green-500" />
+                    <span className="ml-1 text-green-500">Success</span>
+                  </div>
+                )}
+                {promotion.error && (
+                  <div className="flex items-center">
+                    <FaTimesCircle className="ml-2 text-red-500" />
+                    <span className="ml-1 text-red-500">Failed</span>
+                  </div>
+                )}
               </td>
             </tr>
           ))}

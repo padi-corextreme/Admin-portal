@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { FaCheckCircle, FaExclamationCircle } from 'react-icons/fa'; 
 
 const AddPromo = () => {
     const [formData, setFormData] = useState({
@@ -37,7 +38,7 @@ const AddPromo = () => {
             formDataToSubmit.append('originalPrice', formData.originalPrice);
             formDataToSubmit.append('discountPrice', formData.discountPrice);
             formDataToSubmit.append('categories', formData.categories);
-            formDataToSubmit.append('createdBy', userInfo._id); // Assuming user ID is stored in _id field
+            formDataToSubmit.append('createdBy', userInfo._id); 
 
             const response = await axios.post('http://localhost:7000/api/admin/promotions', formDataToSubmit, {
                 headers: {
@@ -70,55 +71,66 @@ const AddPromo = () => {
             <div className="max-w-xl mx-auto mt-16 flex w-full flex-col border rounded-[26px] m-4 bg-white p-8">
                 <div className="text-center p-10">
                     <h1 className="font-semibold text-4xl mb-4">Add New Promotion</h1>
-                    {successMessage && <p className="text-green-600">{successMessage}</p>}
-                    {errorMessage && <p className="text-red-600">{errorMessage}</p>}
+                    <form onSubmit={handleSubmit}>
+                        {/* Form fields */}
+                        {/* Title */}
+                        <div className="mb-4">
+                            <label htmlFor="title" className="text-sm leading-7 text-gray-600">Title</label>
+                            <input type="text" id="title" name="title" value={formData.title} onChange={handleChange} className="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
+                        </div>
+                        {/* Description */}
+                        <div className="mb-4">
+                            <label htmlFor="description" className="text-sm leading-7 text-gray-600">Description</label>
+                            <textarea id="description" name="description" value={formData.description} onChange={handleChange} className="h-32 w-full resize-none rounded border border-gray-300 bg-white py-1 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"></textarea>
+                        </div>
+                        {/* Image */}
+                        <div className="mb-4">
+                            <label htmlFor="image" className="text-sm leading-7 text-gray-600">Image</label>
+                            <input type="file" id="image" name="image" onChange={handleImageChange} className="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
+                        </div>
+                        {/* Discount Type */}
+                        <div className="mb-4">
+                            <label htmlFor="originalPrice" className="text-sm leading-7 text-gray-600">Original Price</label>
+                            <input type="text" id="originalPrice" name="originalPrice" value={formData.originalPrice} onChange={handleChange} className="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
+                        </div>
+                        {/* Discount Amount */}
+                        <div className="mb-4">
+                            <label htmlFor="discountPrice" className="text-sm leading-7 text-gray-600">Discount Price</label>
+                            <input type="number" id="discountPrice" name="discountPrice" value={formData.discountPrice} onChange={handleChange} className="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
+                        </div>
+                        {/* Categories */}
+                        <div className="mb-4">
+                            <label htmlFor="categories" className="text-sm leading-7 text-gray-600">Categories</label>
+                            <select id="categories" name="categories" value={formData.categories} onChange={handleChange} className="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200">
+                                <option value="">Select category...</option>
+                                <option value="clothing">Clothing</option>
+                                <option value="home appliances">Home Appliances</option>
+                                <option value="fashion">Fashion</option>
+                                <option value="furniture">Furniture</option>
+                                <option value="groceries">Groceries</option>
+                            </select>
+                        </div>
+                        {/* Submit Button */}
+                        <div className="flex items-center justify-center mt-4">
+                            <button type="submit" className="hover:shadow-form w-full rounded-md bg-blue-700 py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                                Add New Promotion
+                            </button>
+                        </div>
+                        {/* Success and Error Messages */}
+                        <div className="flex items-center justify-center mt-2">
+                            {successMessage && (
+                                <div className="flex items-center mr-4">
+                                    <FaCheckCircle className="text-green-600 mr-2" /> {successMessage}
+                                </div>
+                            )}
+                            {errorMessage && (
+                                <div className="flex items-center">
+                                    <FaExclamationCircle className="text-red-600 mr-2" /> {errorMessage}
+                                </div>
+                            )}
+                        </div>
+                    </form>
                 </div>
-                <form onSubmit={handleSubmit}>
-                    {/* Form fields */}
-                    {/* Title */}
-                    <div className="mb-4">
-                        <label htmlFor="title" className="text-sm leading-7 text-gray-600">Title</label>
-                        <input type="text" id="title" name="title" value={formData.title} onChange={handleChange} className="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
-                    </div>
-                    {/* Description */}
-                    <div className="mb-4">
-                        <label htmlFor="description" className="text-sm leading-7 text-gray-600">Description</label>
-                        <textarea id="description" name="description" value={formData.description} onChange={handleChange} className="h-32 w-full resize-none rounded border border-gray-300 bg-white py-1 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"></textarea>
-                    </div>
-                    {/* Image */}
-                    <div className="mb-4">
-                        <label htmlFor="image" className="text-sm leading-7 text-gray-600">Image</label>
-                        <input type="file" id="image" name="image" onChange={handleImageChange} className="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
-                    </div>
-                    {/* Discount Type */}
-                    <div className="mb-4">
-                        <label htmlFor="originalPrice" className="text-sm leading-7 text-gray-600">Original Price</label>
-                        <input type="text" id="originalPrice" name="originalPrice" value={formData.originalPrice} onChange={handleChange} className="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
-                    </div>
-                    {/* Discount Amount */}
-                    <div className="mb-4">
-                        <label htmlFor="discountPrice" className="text-sm leading-7 text-gray-600">Discount Price</label>
-                        <input type="number" id="discountPrice" name="discountPrice" value={formData.discountPrice} onChange={handleChange} className="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
-                    </div>
-                    {/* Categories */}
-                    <div className="mb-4">
-                        <label htmlFor="categories" className="text-sm leading-7 text-gray-600">Categories</label>
-                        <select id="categories" name="categories" value={formData.categories} onChange={handleChange} className="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200">
-                            <option value="">Select category...</option>
-                            <option value="clothing">Clothing</option>
-                            <option value="home appliances">Home Appliances</option>
-                            <option value="fashion">Fashion</option>
-                            <option value="furniture">Furniture</option>
-                            <option value="groceries">Groceries</option>
-                        </select>
-                    </div>
-                    {/* Submit Button */}
-                    <div>
-                        <button type="submit" className="hover:shadow-form w-full rounded-md bg-blue-700 py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                            Add New Promotion
-                        </button>
-                    </div>
-                </form>
             </div>
         </section>
     );
