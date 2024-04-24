@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import Signup from './signup/signup.js';
+import SignIn from './sign-in/sign-in-page';
+import AdminDash from './Admin/admin-dash.js';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import ProductCard from './promos/allpromo.js';
+import AddPromo from './promos/add-promo.js';
+import ManagePromo from './promos/managepromo.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<SignIn />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/dashboard' element={<AdminDash />} />
+          <Route path='/allpromos' element={<ProductCard />} />
+          <Route path='/addpromos' element={<AddPromo />} />
+          <Route path='/managepromos' element={<ManagePromo />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
