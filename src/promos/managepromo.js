@@ -5,7 +5,6 @@ import padi from "../assets/padi.jpeg";
 import { Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
 
-
 export default function ManagePromo() {
   const [promotions, setPromotions] = useState([]);
   const [userInfo] = useState(JSON.parse(sessionStorage.getItem('USER_INFO')))
@@ -19,7 +18,7 @@ export default function ManagePromo() {
   useEffect(() => {
     async function fetchPromotions() {
       try {
-        const response = await axios.get('http://localhost:7000/api/admin/promotions');
+        const response = await axios.get(`http://localhost:7000/api/admin/promotions?userId=${userInfo.id}`);
         setPromotions(response.data);
       } catch (error) {
         console.error('Error fetching promotions:', error);
@@ -27,31 +26,14 @@ export default function ManagePromo() {
     }
 
     fetchPromotions();
-  }, []);
+  }, [userInfo.id]);
 
   const deletePromotion = async (id) => {
     try {
       await axios.delete(`http://localhost:7000/api/admin/promotions/${id}`);
-      setPromotions(promotions.map(promotion => {
-        if (promotion._id === id) {
-          setTimeout(() => {
-            setPromotions(promotions.filter(p => p._id !== id));
-          }, 500);
-          return { ...promotion, success: true, error: false };
-        }
-        return promotion;
-      }));
+      setPromotions(promotions.filter(promotion => promotion._id !== id));
     } catch (error) {
       console.error('Error deleting promotion:', error);
-      setPromotions(promotions.map(promotion => {
-        if (promotion._id === id) {
-          setTimeout(() => {
-            setPromotions(promotions.filter(p => p._id !== id));
-          }, 500);
-          return { ...promotion, success: false, error: true };
-        }
-        return promotion;
-      }));
     }
   };
 
@@ -194,8 +176,8 @@ export default function ManagePromo() {
           <tr>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product Title</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product Description</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Original Price</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Discount Price</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Original Price</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Categories</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
           </tr>
