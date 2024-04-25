@@ -210,7 +210,8 @@ const AddPromo = () => {
                 
                 
                  <section id='addnewpromo'>
-      <div className="max-w-xl mx-auto mt-16 flex w-full flex-col border rounded-[26px] m-4 bg-white p-8">
+      <div className="max-w-xl mx-auto mt-16 flex w-full flex-col border-8 border-blue-700
+       rounded-[26px] m-4 p-8 bg-white">
         <div className="text-center p-10">
           <h1 className="font-semibold text-4xl mb-4">Add New Promotion</h1>
           <form onSubmit={handleSubmit}>
