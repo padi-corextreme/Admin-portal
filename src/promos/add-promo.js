@@ -37,6 +37,7 @@ const AddPromo = () => {
     // Redirect the user to the sign-in page
     window.location.href = '/';
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Form submitted');
@@ -70,14 +71,27 @@ const AddPromo = () => {
           categories: '',
         });
         setErrorMessage('');
+
+        // Clear success message after 2 seconds
+        setTimeout(() => {
+          setSuccessMessage('');
+        }, 2000);
+
+        // Refresh form after submission
+        e.target.reset();
       }
     } catch (error) {
       console.error('Error adding promotion:', error);
       setErrorMessage('Failed to add promotion. Please try again.');
       setSuccessMessage('');
+
+      // Clear error message after 2 seconds
+      setTimeout(() => {
+        setErrorMessage('');
+      }, 2000);
     }
   };
-
+  
   return (
     <div>
       <div>
@@ -232,12 +246,12 @@ const AddPromo = () => {
             </div>
             {/* Discount Type */}
             <div className="mb-4">
-              <label htmlFor="discountType" className="text-sm leading-7 text-gray-600">Original Price</label>
+              <label htmlFor="discountType" className="text-sm leading-7 text-gray-600">Discount Price</label>
               <input type="text" id="discountType" name="discountType" value={formData.discountType} onChange={handleChange} className="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
             </div>
             {/* Discount Amount */}
             <div className="mb-4">
-              <label htmlFor="discountAmount" className="text-sm leading-7 text-gray-600">Discount Price</label>
+              <label htmlFor="discountAmount" className="text-sm leading-7 text-gray-600">Original Price</label>
               <input type="number" id="discountAmount" name="discountAmount" value={formData.discountPrice} onChange={handleChange} className="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200" />
             </div>
             {/* Categories */}

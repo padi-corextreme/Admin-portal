@@ -7,7 +7,7 @@ import Avatar from 'react-avatar';
 
 const AllPromo = () => {
   const [promotions, setPromotions] = useState([]);
-  const [userInfo] = useState(JSON.parse(sessionStorage.getItem('USER_INFO')))
+  const [userInfo] = useState(JSON.parse(sessionStorage.getItem('USER_INFO')));
 
   const handleLogout = () => {
     // Clear user session information
@@ -23,12 +23,14 @@ const AllPromo = () => {
   const fetchPromotions = async () => {
     try {
       const response = await axios.get('http://localhost:7000/api/admin/promotions');
-      setPromotions(response.data);
+      // Filter promotions to include only those created by the logged-in user
+      const userPromotions = response.data.filter(promotion => promotion.userId === userInfo.id);
+      setPromotions(userPromotions);
     } catch (error) {
       console.error('Error fetching promotions:', error);
     }
   };
-
+  
   return (
     <div>
     <div>
